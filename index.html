@@ -1,0 +1,66 @@
+---
+layout: default
+title: Home
+cover: '/assets/images/city.png'
+about: 'about.html'
+---
+
+<header class="main-header {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
+    <nav class="main-nav overlay clearfix">
+            {% if site.author.thumb %}
+                <a class="blog-logo" href="{{ site.baseurl }}">
+                    <img src="{{ site.author.thumb }}" alt="foto do perfil de {{site.author.name}}" />
+                </a>
+            {% endif %}
+           <!-- <a class="subscribe-button icon-feed" href="{{ site.baseurl }}rss.xml">Feed RSS</a> -->
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title" style="text-shadow:1px 1px 3px #111">{{ site.name }}</h1>
+            <h2 class="page-description" style="text-shadow:1px 1px 3px #111">
+                {% if site.description %} {{ site.description }}. {% endif %}
+                {% if site.urls.about %} <a style="color:#fff" href='{{ site.urls.about }}'> Sobre </a> {% endif %}
+            </h2>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Role a página</span></a>
+</header>
+
+
+<main id="content" class="content" role="main">
+
+
+    <div class="extra-pagination inner">
+        {% include pagination.html %}
+    </div>
+
+    {% for post in paginator.posts %}
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            {{ post.excerpt }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            {% if site.author %}
+                <a href="{{site.urls.about}}">
+                    <img class="author-thumb" src="{{site.author.thumb}}" alt="imagem do perfil de {{site.author.name}}" nopin="nopin" />
+                    {{ site.author.name }}
+                </a>
+            {% endif %}
+            {% if post.categories.size > 0 %} 
+                {{ post.categories | array_to_sentence_string | prepend: 'on ' }} 
+            {% endif %}
+            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                {{ post.date | date_to_string }}
+            </time> 
+        </footer>
+    </article>
+
+    {% endfor %}
+
+    {% include pagination.html %}
+
+</main>

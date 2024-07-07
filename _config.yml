@@ -1,0 +1,27 @@
+name: Ramonn
+description: Computer Science Student
+
+markdown: kramdown
+highlighter: rouge
+paginate: 15
+baseurl: /
+domain_name: 'http://ramonnezzz.github.com'
+google_analytics: 'UA-XXXXXXXX-X'
+
+# Details for the RSS feed generator
+url: 'http://ramonnezzz.github.com'
+
+author:
+    name: Ramonnezzz
+    thumb: /assets/images/profile.png
+    bio: Meu nome é Ramon, sou estudante de Ciência da Computação. Estou sempre em busca de maneiras de compartilhar conhecimento e auxiliar outros.
+    url:
+        site: 'http://ramonnezzz.github.com'
+        email: 'savioramonnogueira@arsstack.com'
+
+urls:
+    about: /sobre
+
+img_path: /assets/images/
+plugins:
+  - jekyll-paginate
